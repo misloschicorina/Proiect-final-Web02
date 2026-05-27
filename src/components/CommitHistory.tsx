@@ -14,12 +14,8 @@ const CommitHistory = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  // ==========================================
-  // CONFIGURARE: Pune aici datele repo-ului public
-  // ==========================================
-  const owner = 'misloschicorina'; // Ex: 'cori123'
-  const repo = 'CLI-Movie-API-Client';  // Ex: 'pthreads-lab' sau 'portofoliu-proiect'
-  // ==========================================
+  const owner = 'misloschicorina'; 
+  const repo = 'Proiect-final-Web02';  
 
   useEffect(() => {
     const fetchProjectCommits = async () => {
@@ -29,12 +25,11 @@ const CommitHistory = () => {
         const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/commits?per_page=5`);
         
         if (!response.ok) {
-          throw new Error('Nu s-a putut accesa repository-ul. Verifică dacă numele este corect și proiectul e Public.');
+          throw new Error('Nu s-a putut accesa repo-ul sau nu exista commit-uri publice.');
         }
 
         const data = await response.json();
         
-        // Mapăm array-ul primit de la GitHub în structura noastră locală
         const formatted = data.map((item: any) => ({
           id: item.sha,
           repoName: repo,
@@ -69,7 +64,7 @@ const CommitHistory = () => {
     <div className={styles.historyContainer}>
       <h3 className={styles.title}>Activitate Live pe GitHub</h3>
       <p className={styles.subtitle}>
-        Ultimele actualizări din proiectul <strong style={{color: '#007acc'}}>{repo}</strong>:
+        Ultimele actualizări din proiectul <strong className={styles.repoName}>{repo}</strong>:
       </p>
       
       <div className={styles.timeline}>
