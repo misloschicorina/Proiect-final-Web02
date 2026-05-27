@@ -1,0 +1,60 @@
+.heroContainer {
+  display: flex;  /* elem unul langa altul */
+  align-items: center;
+  justify-content: space-between;
+  min-height: 100vh;  /* viewport height cat tot ecranul */
+  padding: 0 10%;
+  box-sizing: border-box;
+  background: #ffffff; 
+}
+
+/* text box */
+.content {
+  flex: 1;
+  max-width: 600px;
+}
+
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #1a1a1a;
+}
+
+.description {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  color: #4a4a4a;
+}
+
+/* butonul call-to-action catre sectiune proiecte */
+.ctaButton {
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #0c26cc;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.ctaButton:hover {
+  background-color: #1594dd;
+  transform: translateY(-2px);
+}
+
+.imageContainer {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.profileImg {
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
