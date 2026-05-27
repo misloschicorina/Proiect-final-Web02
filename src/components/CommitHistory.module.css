@@ -46,20 +46,43 @@
   position: relative;
 }
 
-/* Punctul albastru de pe linie pentru fiecare commit */
+/* Punctul de pe linie pentru fiecare commit (Modificat pentru steluță) */
 .bullet {
   position: absolute;
   left: -27px; /* il aliniaza peste linia verticala de timeline */
   top: 5px;
   width: 12px;
   height: 12px;
-  border-radius: var(--card-radius); /* Schimbat de la 50% pentru a prelua dinamic rotunjimea (cerc sau patrat retro) */
-  background-color: var(--accent); /* Inlocuit cu variabila */
-  border: 2px solid var(--card-bg); /* Foloseste fundalul cardului ca sa izoleze punctul de linie */
-  box-shadow: 0 0 0 2px var(--accent); /* Inlocuit cu variabila */
-  transition: border-radius 0.3s ease;
+  border-radius: var(--card-radius); 
+  background-color: var(--accent); 
+  border: 2px solid var(--card-bg); 
+  box-shadow: 0 0 0 2px var(--accent); 
+  transition: border-radius 0.3s ease, background-color 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
+
+  /* Pregătim elementul să centreze perfect steluța în interior */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+/* NOU: Injectăm steluța din variabilă (pe Modern/Retro va fi goală) */
+.bullet::before {
+  content: var(--timeline-icon, "");
+  font-size: 26px;            /* MODIFICAT: Am mărit steaua de la 18px la 26px */
+  color: var(--accent);
+  line-height: 1;
+  display: block;
+}
+
+/* NOU: Ajustări de poziție chirurgicală DOAR pe tema Whimsical */
+[data-theme='whimsical'] .bullet {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  
+  /* REPOZIȚIONARE PERFECTĂ PE AXĂ: */
+  left: -27px; /* MODIFICAT: Împinge steaua mai la stânga, fix pe centrul liniei */
+}
 .commitContent {
   display: flex;
   flex-direction: column;

@@ -7,6 +7,7 @@
   --text-main: #1a1a1a;
   --text-muted: #666666;
   --accent: #007acc; 
+  --accent-hover: #1594dd;
   --card-shadow: rgba(0, 0, 0, 0.05);
   --btn-text: #ffffff;         /* REPARAT: Textul de pe buton ramane alb pe modern */
 
@@ -19,6 +20,12 @@
   --grid-max-width: 100%;     /* REPARAT: Grila se intinde normal pe modern */
   --container-direction: column; /* GitHub sub proiecte */
   --github-margin-top: 200px; /* Spatiu mare sus */
+  --hero-direction: row;       /* Text în stânga, poză în dreapta */
+  --hero-align: flex-start;    /* Aliniere la stânga pentru text */
+  --profile-size: 420px;       /* Dimensiunea ta originală, mare */
+  --hero-padding-top: 0px;     /* Pe modern nu avem nevoie de spatiu suplimentar sus */
+
+  --timeline-icon: "";
 }
 
 /* TEMA RETRO - Retro Layout */
@@ -29,7 +36,8 @@
   --card-bg: #ffecb4;     
   --text-main: #5a3d2b;   
   --text-muted: #e5771e;  
-  --accent: #f4a127;      
+  --accent: #f4a127;    
+  --accent-hover: #e5771e;  
   --card-shadow: rgba(90, 61, 43, 0.15);
   --btn-text: #5a3d2b;        
 
@@ -44,6 +52,45 @@
   --grid-max-width: 500px;     
   --container-direction: row;  
   --github-margin-top: 102px;   
+  --hero-direction: row;       /* La fel ca pe modern, text stânga, poză dreapta */
+  --hero-align: flex-start;
+  --profile-size: 420px;       /* Rămâne mare și pe retro */
+  --hero-padding-top: 0px;     /* Pe modern nu avem nevoie de spatiu suplimentar sus */
+
+  --timeline-icon: "";
+}
+
+/* TEMA WHIMSICAL - Jucăușă și Neconvențională */
+[data-theme='whimsical'] {
+  /* Culori vii și distractive */
+  --bg-hero: #fff0f5;         /* Roz pal/lavandă deschis */
+  --bg-projects: #e0f2f1;     /* Mentă pastelat pentru secțiunea de jos */
+  --card-bg: #ffffff;         /* Carduri albe curate care să sară în evidență */
+  --text-main: #4b0082;       /* Indigo profund pentru contrast maxim */
+  --text-muted: #9400d3;      /* Violet intens pentru textul secundar */
+  --accent: #ff4081;          /* Roz neon/electric pentru butoane și elemente active */
+  --accent-hover: #f50057;    /* Roz și mai intens la hover */
+  --card-shadow: rgba(75, 0, 130, 0.1); /* Umbră fină cu tentă indigo */
+  --btn-text: #ffffff;        /* Text alb pe butonul roz */
+
+  /* Structură și Forme complet diferite */
+  --profile-radius: 60% 40% 50% 50% / 40% 50% 50% 60%; /* Formă asimetrică de bulă/blob pentru poză! */
+  --card-radius: 35px;        /* Colțuri super rotunjite ca niște bule */
+  --card-border: none;        /* Fără bordură rigidă */
+  --profile-border: none;
+  
+  /* Layout-ul mare: aducem GitHub înapoi jos, dar cu o așezare flexibilă */
+  --projects-display: grid;
+  --projects-columns: repeat(auto-fit, minmax(280px, 1fr));
+  --grid-max-width: 100%;
+  --container-direction: column;
+  --github-margin-top: 120px;
+  --hero-direction: column-reverse; /* Inversăm ordinea: poza trece SUS, textul JOS */
+  --hero-align: center;             /* Centrăm textul pe mijloc */
+  --profile-size: 350px;       /* O micșorăm la 300px pentru un look mai finuț și jucăuș */
+  --hero-padding-top: 80px;    /* Împinge tot conținutul în jos cu 80px ca să nu mai fie lipit de tavan */
+
+  --timeline-icon: "★"; /* Sau poți pune un emoji strălucitor dacă vrei: "✨" */
 }
 
 .projectsContainer {

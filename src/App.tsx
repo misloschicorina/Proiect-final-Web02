@@ -6,7 +6,7 @@ import './App.css';
 
 function App() {
   // Lista de teme disponibile (scalabila)
-  const availableThemes = ['default', 'retro'];
+  const availableThemes = ['default', 'retro', 'whimsical'];
 
   // Citim din LocalStorage la pornire. Daca e gol, punem 'default'
   const [theme, setTheme] = useState<string>(() => {
@@ -26,18 +26,13 @@ function App() {
     setTheme(availableThemes[nextIndex]);
   };
 
-  // Returneaza textul potrivit pentru buton
-  const getButtonText = () => {
-    if (theme === 'default') return '🎨 Schimba pe Retro';
-    return '✨ Revino la Modern';
-  };
-
   return (
     <> {/* fragment pt a putea returna mai multe elem (React ne returnam un sg parinte) */}
       
       {/* Butonul pentru schimbarea temei pozitionat fix in colt */}
       <button 
         onClick={handleThemeChange} 
+        className="theme-toggle-btn" /* Adăugat o clasă simplă pentru a injecta emoji-ul din CSS */
         style={{
           position: 'fixed',
           top: '20px',
@@ -51,10 +46,13 @@ function App() {
           cursor: 'pointer',
           fontWeight: 'bold',
           boxShadow: '0 4px 15px var(--card-shadow)',
-          transition: 'all 0.3s ease'
+          transition: 'all 0.3s ease',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px'
         }}
       >
-        {getButtonText()}
+        Switch Style
       </button>
 
       {/* Sectiunea hero (cea de sus cu text si poza) */}

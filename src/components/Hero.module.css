@@ -1,18 +1,23 @@
 .heroContainer {
-  display: flex;  /* elem unul langa altul */
+  display: flex;  
+  flex-direction: var(--hero-direction); 
   align-items: center;
   justify-content: space-between;
-  min-height: 100vh;  /* viewport height cat tot ecranul */
-  padding: 0 10%;
+  min-height: 100vh;  
+  padding: var(--hero-padding-top) 10% 0 10%; /* <-- MODIFICAT: folosește variabila pentru marginea de sus */
   box-sizing: border-box;
-  background: var(--bg-hero); /* Inlocuit cu variabila din tema */
-  transition: background-color 0.3s ease; /* Tranzitie fina pentru schimbarea temei */
+  background: var(--bg-hero); 
+  transition: background-color 0.3s ease, flex-direction 0.3s ease, padding 0.3s ease; 
 }
 
 /* text box */
 .content {
   flex: 1;
   max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: var(--hero-align); /* <-- DINAMIC: la stânga pe modern/retro, pe centru pe whimsical */
+  text-align: var(--hero-align);  /* <-- DINAMIC: centrează și rândurile de text pe whimsical */
 }
 
 .title {
@@ -44,7 +49,7 @@
 }
 
 .ctaButton:hover {
-  background-color: #1594dd;
+  background-color: var(--accent-hover);
   transform: translateY(-2px);
 }
 
@@ -55,11 +60,12 @@
 }
 
 .profileImg {
-  width: 420px;
-  height: 420px;
+  width: var(--profile-size);  /* <-- DINAMIC: 420px pe modern/retro, 300px pe whimsical */
+  height: var(--profile-size); /* <-- DINAMIC */
   border-radius: var(--profile-radius); 
-  border: var(--profile-border); /* <-- ADAUGAT: Va pune marginea maro doar pe retro, pe modern va fi none */
+  border: var(--profile-border); 
   object-fit: cover;
   box-shadow: 0 10px 20px var(--card-shadow); 
-  transition: box-shadow 0.3s ease, border-radius 0.3s ease;
+  /* Am adăugat width și height în transition pentru ca poza să se micșoreze/mărească fluid când schimbi temele */
+  transition: box-shadow 0.3s ease, border-radius 0.3s ease, width 0.3s ease, height 0.3s ease;
 }
