@@ -7,7 +7,7 @@
   font-size: 2rem;
   margin-bottom: 40px;
   text-align: center;
-  color: #1a1a1a;
+  color: var(--text-main); /* Inlocuit cu variabila */
 }
 
 .grid {
@@ -20,12 +20,12 @@
 /* Stilul de baza al cardului cu proiect*/
 .card {
   display: block;
-  background-color: #ffffff;
+  background-color: var(--card-bg); /* Inlocuit cu variabila */
   border-radius: 12px;
   overflow: hidden;
   text-decoration: none; /* elimina sublinierea de link text */
   color: inherit;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 10px var(--card-shadow); /* Inlocuit cu variabila */
   /* tranzitii pt cand se modifica proprietatile cardului */
   transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
@@ -33,14 +33,14 @@
 .card:hover {
   transform: scale(1.05); /* mareste cardul cu 5% */
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-  background-color: #f8f9fa;
+  background-color: var(--bg-hero); /* Pe retro va lua culoarea de hero pt un contrast placut */
 }
 
 .cardImage {
   width: 100%;
   height: 180px;
   object-fit: cover;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* Inlocuit din #eee ca sa fie transparent si fin pe ambele teme */
 }
 
 .cardContent {
@@ -51,12 +51,23 @@
 .cardTitle {
   font-size: 1.3rem;
   margin: 0 0 10px 0;
-  color: #0c26cc;
+  color: var(--accent); /* Ia culoarea de accent corespunzatoare temei */
 }
 
 .cardDescription {
   font-size: 0.95rem;
   line-height: 1.5;
-  color: #555555;
+  color: var(--text-muted); /* Inlocuit cu variabila */
   margin: 0;
+}
+
+/* SCHIMBARE LAYOUT RETRO: Fortam proiectele sa stea pe o singura coloana (unul sub altul) */
+[data-theme='retro'] .grid {
+  grid-template-columns: 1fr !important;
+  max-width: 500px; /* Limitam latimea cardurilor ca sa nu se intinda pe tot ecranul */
+}
+
+/* SCHIMBARE LAYOUT RETRO: Cardurile pierd rotunjimile si devin patrate cu margini drepte */
+[data-theme='retro'] .card {
+  border-radius: 0px !important;
 }

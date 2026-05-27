@@ -1,11 +1,62 @@
+import { useState, useEffect } from 'react';
 import Hero from './components/Hero';
 import ProjectsGrid from './components/ProjectsGrid';
 import CommitHistory from './components/CommitHistory';
 import './App.css';
 
 function App() {
+  // Lista de teme disponibile (scalabila)
+  const availableThemes = ['default', 'retro'];
+
+  // Citim din LocalStorage la pornire. Daca e gol, punem 'default'
+  const [theme, setTheme] = useState<string>(() => {
+    return localStorage.getItem('portfolio-theme') || 'default';
+  });
+
+  // Aplicam tema pe eticheta HTML si o salvam in LocalStorage
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('portfolio-theme', theme);
+  }, [theme]);
+
+  // Schimba tema in mod circular prin lista
+  const handleThemeChange = () => {
+    const currentIndex = availableThemes.indexOf(theme);
+    const nextIndex = (currentIndex + 1) % availableThemes.length;
+    setTheme(availableThemes[nextIndex]);
+  };
+
+  // Returneaza textul potrivit pentru buton
+  const getButtonText = () => {
+    if (theme === 'default') return '🎨 Schimba pe Retro';
+    return '✨ Revino la Modern';
+  };
+
   return (
     <> {/* fragment pt a putea returna mai multe elem (React ne returnam un sg parinte) */}
+      
+      {/* Butonul pentru schimbarea temei pozitionat fix in colt */}
+      <button 
+        onClick={handleThemeChange} 
+        style={{
+          position: 'fixed',
+          top: '20px',
+          right: '20px',
+          zIndex: 1000,
+          padding: '12px 20px',
+          borderRadius: '30px',
+          border: '2px solid var(--text-main)',
+          backgroundColor: 'var(--card-bg)',
+          color: 'var(--text-main)',
+          cursor: 'pointer',
+          fontWeight: 'bold',
+          boxShadow: '0 4px 15px var(--card-shadow)',
+          transition: 'all 0.3s ease'
+        }}
+      >
+        {getButtonText()}
+      </button>
+
       {/* Sectiunea hero (cea de sus cu text si poza) */}
       <Hero />
 

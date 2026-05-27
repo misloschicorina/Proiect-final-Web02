@@ -1,8 +1,51 @@
+/* Tema standard (Light) - Pastram albul tau curat */
+:root, [data-theme='default'] {
+  --bg-hero: #ffffff;
+  --bg-projects: #ffffff; 
+  --card-bg: #ffffff;
+  --text-main: #1a1a1a;
+  --text-muted: #666666;
+  --accent: #007acc; 
+  --card-shadow: rgba(0, 0, 0, 0.05);
+}
+
+/* Tema Retro (Conform paletei tale) */
+[data-theme='retro'] {
+  --bg-hero: #ffecb4;     /* Crem cald */
+  --bg-projects: #75c8ae; /* Verde menta vintage */
+  --card-bg: #ffecb4;     /* Crem pentru carduri */
+  --text-main: #5a3d2b;   /* Maro inchis */
+  --text-muted: #e5771e;  /* Portocaliu inchis */
+  --accent: #f4a127;      /* Portocaliu aprins */
+  --card-shadow: rgba(90, 61, 43, 0.15);
+}
+
+/* Stilul global aplicat pe corp */
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-hero);
+  color: var(--text-main);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Containerul tau modificat cu variabile */
 .projectsContainer {
-  min-height: 100vh;       
-  background-color:  #ffffff;
+  min-height: 100vh;        
+  background-color: var(--bg-projects); 
   padding-top: 10vh;        
   padding-bottom: 30vh;
   padding-left: 10%;
   padding-right: 10%;
+  scroll-margin-top: 60px;
+  transition: background-color 0.3s ease;
+}
+
+/* SCHIMBARE LAYOUT RETRO: Punem proiectele si GitHub pe doua coloane */
+[data-theme='retro'] .projectsContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start; /* Revine la flex-start ca sa nu se mai lungeasca boxul! */
+  justify-content: space-between;
+  gap: 50px; 
 }
