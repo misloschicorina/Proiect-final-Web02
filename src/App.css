@@ -1,5 +1,6 @@
-/* Tema standard (Light) - Pastram albul tau curat */
+/* TEMA STANDARD (LIGHT) - Professional Layout */
 :root, [data-theme='default'] {
+  /* Culori */
   --bg-hero: #ffffff;
   --bg-projects: #ffffff; 
   --card-bg: #ffffff;
@@ -7,29 +8,44 @@
   --text-muted: #666666;
   --accent: #007acc; 
   --card-shadow: rgba(0, 0, 0, 0.05);
+  --btn-text: #ffffff;         /* REPARAT: Textul de pe buton ramane alb pe modern */
+
+  /* Structura/Layout */
+  --profile-radius: 50%;      /* Cerc perfect */
+  --card-radius: 12px;        /* Colturi rotunjite */
+  --card-border: none;        /* Fara margini groase */
+  --projects-display: grid;   /* REPARAT: Revine la grila lui nativa */
+  --projects-columns: repeat(auto-fit, minmax(300px, 1fr)); /* REPARAT: Carduri mici in linie */
+  --grid-max-width: 100%;     /* REPARAT: Grila se intinde normal pe modern */
+  --container-direction: column; /* GitHub sub proiecte */
+  --github-margin-top: 200px; /* Spatiu mare sus */
 }
 
-/* Tema Retro (Conform paletei tale) */
+/* TEMA RETRO - Retro Layout */
 [data-theme='retro'] {
-  --bg-hero: #ffecb4;     /* Crem cald */
-  --bg-projects: #75c8ae; /* Verde menta vintage */
-  --card-bg: #ffecb4;     /* Crem pentru carduri */
-  --text-main: #5a3d2b;   /* Maro inchis */
-  --text-muted: #e5771e;  /* Portocaliu inchis */
-  --accent: #f4a127;      /* Portocaliu aprins */
+  /* Culori (raman identice) */
+  --bg-hero: #ffecb4;     
+  --bg-projects: #75c8ae; 
+  --card-bg: #ffecb4;     
+  --text-main: #5a3d2b;   
+  --text-muted: #e5771e;  
+  --accent: #f4a127;      
   --card-shadow: rgba(90, 61, 43, 0.15);
+  --btn-text: #5a3d2b;        
+
+  /* Structura/Layout - MODIFICAT AICI */
+  --profile-radius: 0px;       /* MODIFICAT: Poza de profil devine patrat perfect ascutit */
+  --card-radius: 0px;          /* Cardurile raman patrate perfecte */
+  --card-border: 3px solid var(--text-main);    /* Marginea groasa maro pentru carduri si GitHub */
+  --profile-border: 3px solid var(--text-main); /* ADAUGAT: Margine groasa maro si pentru poza */
+  
+  --projects-display: block;   
+  --projects-columns: 1fr;     
+  --grid-max-width: 500px;     
+  --container-direction: row;  
+  --github-margin-top: 102px;   
 }
 
-/* Stilul global aplicat pe corp */
-body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  background-color: var(--bg-hero);
-  color: var(--text-main);
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-/* Containerul tau modificat cu variabile */
 .projectsContainer {
   min-height: 100vh;        
   background-color: var(--bg-projects); 
@@ -39,13 +55,10 @@ body {
   padding-right: 10%;
   scroll-margin-top: 60px;
   transition: background-color 0.3s ease;
-}
 
-/* SCHIMBARE LAYOUT RETRO: Punem proiectele si GitHub pe doua coloane */
-[data-theme='retro'] .projectsContainer {
   display: flex;
-  flex-direction: row;
-  align-items: flex-start; /* Revine la flex-start ca sa nu se mai lungeasca boxul! */
+  flex-direction: var(--container-direction);
+  align-items: flex-start;
   justify-content: space-between;
-  gap: 50px; 
+  gap: 50px;
 }

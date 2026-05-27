@@ -35,12 +35,12 @@
   padding: 12px 24px;
   font-size: 1rem;
   font-weight: bold;
-  color: #ffffff; /* Textul butonului ramane alb pentru lizibilitate */
+  color: var(--btn-text); /* Schimbat global ca sa ia culoarea textului principal din tema (maro pe retro, inchis pe default) */
   background-color: var(--accent); /* Ia culoarea de accent corespunzatoare temei */
   border: none;
   border-radius: 15px;
   cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  transition: background-color 0.2s ease, transform 0.2s ease, color 0.2s ease;
 }
 
 .ctaButton:hover {
@@ -57,17 +57,9 @@
 .profileImg {
   width: 420px;
   height: 420px;
-  border-radius: 50%;
+  border-radius: var(--profile-radius); 
+  border: var(--profile-border); /* <-- ADAUGAT: Va pune marginea maro doar pe retro, pe modern va fi none */
   object-fit: cover;
-  box-shadow: 0 10px 20px var(--card-shadow); /* Umbra devine si ea adaptabila dupa tema */
-  transition: box-shadow 0.3s ease;
-}
-
-/* SCHIMBARE LAYOUT RETRO: Poza isi pierde rotunjimea si devine patrat perfect */
-[data-theme='retro'] .profileImg {
-  border-radius: 20px !important;
-}
-
-[data-theme='retro'] .ctaButton {
-  color: var(--text-main) !important; /* Ia automat maroul inchis definit in tema */
+  box-shadow: 0 10px 20px var(--card-shadow); 
+  transition: box-shadow 0.3s ease, border-radius 0.3s ease;
 }

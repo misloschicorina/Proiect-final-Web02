@@ -11,23 +11,25 @@
 }
 
 .grid {
-  display: grid;
+  display: var(--projects-display); /* Legat direct la variabila structurala din App.css (grid sau block) */
   /* imparte spatiul in coloane responsive */
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: var(--projects-columns); /* Legat direct la variabila structurala din App.css */
   gap: 30px;
+  max-width: var(--grid-max-width);
 }
 
 /* Stilul de baza al cardului cu proiect*/
 .card {
   display: block;
   background-color: var(--card-bg); /* Inlocuit cu variabila */
-  border-radius: 12px;
+  border-radius: var(--card-radius); /* Legat direct la variabila structurala din App.css (12px sau 0px) */
+  border: var(--card-border);       /* Legat direct la variabila structurala din App.css (none sau 3px solid) */
   overflow: hidden;
   text-decoration: none; /* elimina sublinierea de link text */
   color: inherit;
   box-shadow: 0 4px 10px var(--card-shadow); /* Inlocuit cu variabila */
   /* tranzitii pt cand se modifica proprietatile cardului */
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-radius 0.3s ease;
 }
 
 .card:hover {
@@ -59,15 +61,4 @@
   line-height: 1.5;
   color: var(--text-muted); /* Inlocuit cu variabila */
   margin: 0;
-}
-
-/* SCHIMBARE LAYOUT RETRO: Fortam proiectele sa stea pe o singura coloana (unul sub altul) */
-[data-theme='retro'] .grid {
-  grid-template-columns: 1fr !important;
-  max-width: 500px; /* Limitam latimea cardurilor ca sa nu se intinda pe tot ecranul */
-}
-
-/* SCHIMBARE LAYOUT RETRO: Cardurile pierd rotunjimile si devin patrate cu margini drepte */
-[data-theme='retro'] .card {
-  border-radius: 0px !important;
 }
